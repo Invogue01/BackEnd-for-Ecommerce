@@ -11,15 +11,15 @@ router.get("/", async (req, res) => {
     },
   });
   try {
-    const categoryData = Category.findAll();
+    const categoryData =await Category.findAll();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: "Failed to get requested categories" });
+    res.status(500).json(error);
   }
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   Category.findOne({
     where: {
       id: req.params.id,
@@ -30,28 +30,28 @@ router.get("/:id", (req, res) => {
     },
   });
   try {
-    const categoryData =Category.findOne();
+    const categoryData =await Category.findOne();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: "Failed to get requested categories" });
+    res.status(500).json(error);
   }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   Category.create({
     category_name:req.body.category_name
   })
   try {
-    const categoryData = Category.create();
+    const categoryData =await Category.create();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: "Failed to get requested categories" });
+    res.status(500).json(error);
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   Category.update(req.body,{
     where:{
       id:req.params.id
@@ -59,26 +59,26 @@ router.put("/:id", (req, res) => {
     
   })
   try {
-    const categoryData = Category.update();
+    const categoryData = await Category.update();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: "Failed to get requested categories" });
+    res.status(500).json(error);
   }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   Category.destroy({
 where:{
   id:req.params.id
 }
   })
   try {
-    const categoryData = Category.destroy();
+    const categoryData = await Category.destroy();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: "Failed to get requested categories" });
+    res.status(500).json(error);
   }
 });
 

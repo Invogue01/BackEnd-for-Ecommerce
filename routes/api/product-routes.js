@@ -4,7 +4,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // The `/api/products` endpoint
 
 // get all products
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   Product.findAll({
     attributes:['id','product_name','price','stock'],
     includes:[
@@ -19,16 +19,16 @@ router.get('/', (req, res) => {
     ]
   })
   try {
-    const categoryData = Product.findAll();
+    const categoryData =await Product.findAll();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: "Failed to get requested categories" });
+    res.status(500).json(error);
   }
 });
 
 // get one product
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   Product.findOne({
     where:{
       id:req.params.id
@@ -46,11 +46,11 @@ router.get('/:id', (req, res) => {
     ]
   })
   try {
-    const categoryData = Product.findOne();
+    const categoryData =await Product.findOne();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ error: "Failed to get requested categories" });
+    res.status(500).json(error);
   }
   
 });
