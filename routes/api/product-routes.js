@@ -5,18 +5,65 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', (req, res) => {
-  // find all products
-  // be sure to include its associated Category and Tag data
+  Product.findAll({
+    attributes:['id','product_name','price','stock'],
+    includes:[
+      {
+        model:Category,
+        attributes:['category_name']
+      },
+      {      
+        model:Tag,
+      attributes:['tag_name']
+      }
+    ]
+  })
+  try {
+    const categoryData = await Category.findAll();
+    res.status(200).json(categoryData);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: "Failed to get requested categories" });
+  }
 });
 
 // get one product
 router.get('/:id', (req, res) => {
-  // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
+  Product.findOne({
+    where:{
+      id:req.params.id
+    },
+    attributes:['id','product_name','price','stock'],
+    includes:[
+      {
+        model:Category,
+        attributes:['category_name']
+      },
+      {      
+        model:Tag,
+      attributes:['tag_name']
+      }
+    ]
+  })
+  try {
+    const categoryData = await Category.findAll();
+    res.status(200).json(categoryData);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: "Failed to get requested categories" });
+  }
+  
 });
 
 // create new product
 router.post('/', (req, res) => {
+  Product.create({
+    product_name:req.body.product_name,
+    price:req.body.price,
+    stock:req.body.stock,
+    category_id:req.body.category_id,
+    tagIds:req.body.tadIds
+  })
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -90,7 +137,22 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+  Product.destroy({
+    where:{
+      id:req.params.id
+    }
+  })
+  .then(dbProductData => {
+    if (!dbProductData) {
+      rs.status(404).json({message: 'No product found with this id'});
+      return;
+    }
+    res.json(dbProductData);
+  })
+ .catch (error=> {
+    console.log(error.message);
+    res.status(500).json({ error: "Failed to delete Product" });
+  })
 });
 
 module.exports = router;
