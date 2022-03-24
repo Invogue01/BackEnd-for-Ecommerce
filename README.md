@@ -13,9 +13,8 @@
 
   1. [About](#about)
       1. [User Story](#user%20story)
-      2. [Acceptance criteria](#acceptance%20criteria)
-      3. [Visuals](#visuals)
-      4. [Build](#build)
+      2. [Visuals](#visuals)
+      3. [Build](#build)
   2. [Installation](#installation)
   3. [License](#license)
   4. [Contributing](#contributing)
