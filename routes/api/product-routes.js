@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     ]
   })
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = Product.findAll();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
     ]
   })
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = Product.findOne();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);

@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     },
   });
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = Category.findAll();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
@@ -30,7 +30,7 @@ router.get("/:id", (req, res) => {
     },
   });
   try {
-    const categoryData = await Category.findAll();
+    const categoryData =Category.findOne();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
@@ -43,7 +43,7 @@ router.post("/", (req, res) => {
     category_name:req.body.category_name
   })
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = Category.create();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
@@ -59,7 +59,7 @@ router.put("/:id", (req, res) => {
     
   })
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = Category.update();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
@@ -74,7 +74,7 @@ where:{
 }
   })
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = Category.destroy();
     res.status(200).json(categoryData);
   } catch (error) {
     console.log(error.message);
