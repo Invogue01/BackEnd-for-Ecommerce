@@ -42,6 +42,10 @@ SO THAT your company can compete with other e-commerce companies
 
 ![Code Example](./media/codeSnippet.png)
 
+[Browser based Video Walkthrough. Click Download/View Raw to display](./media/ecommercebe.webm)
+
+[Or follow this link](https://watch.screencastify.com/v/8tKesqEvt1MERq6YPT1V)
+
 ---
 
 ## Installation:
