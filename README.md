@@ -40,7 +40,7 @@ SO THAT your company can compete with other e-commerce companies
 
 ## Visuals:
 
-![]()
+![Code Example](./media/codeSnippet.png)
 
 ---
 
