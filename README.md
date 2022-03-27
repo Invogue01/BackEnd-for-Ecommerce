@@ -4,16 +4,15 @@ Back End application for eCommerce app
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-[A deployed version can be viewed here.](none)
-
 ---
 
 ## Contents
 
 1. [About](#about)
+
    1. [User Story](#user%20story)
    2. [Visuals](#visuals)
-   3. [Build](#build)
+
 2. [Installation](#installation)
 3. [License](#license)
 4. [Contributing](#contributing)
